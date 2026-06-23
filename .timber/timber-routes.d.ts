@@ -18,6 +18,10 @@ declare module '@timber-js/app' {
       segmentParams: {}
       searchParams: {}
     }
+    '/example': {
+      segmentParams: {}
+      searchParams: {}
+    }
   }
 }
 
@@ -26,6 +30,7 @@ declare module '@timber-js/app/client' {
 
   export function useQueryStates<R extends '/'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
   export function useQueryStates<R extends '/blog/hello'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
+  export function useQueryStates<R extends '/example'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
   export function useQueryStates<T extends Record<string, unknown>>(codecs: { [K in keyof T]: SearchParamCodec<T[K]> }, options?: QueryStatesOptions): [T, SetParams<T>]
 
   // Typed Link overloads — per-route (block 1 / emitted first)
@@ -34,6 +39,7 @@ declare module '@timber-js/app/client' {
       props:
         | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
         | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/blog/hello'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
+        | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/example'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
     ): import('react').JSX.Element
   }
 
