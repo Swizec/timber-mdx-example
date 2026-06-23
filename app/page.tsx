@@ -7,6 +7,9 @@ export default function Home() {
       <p>
         Edit <code>app/page.tsx</code> to get started.
       </p>
+      <p>
+        Try the new <a href="/blog/hello">MDX blog page</a>.
+      </p>
     </main>
   );
 }

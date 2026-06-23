@@ -1,0 +1,27 @@
+---
+title: Hello from MDX
+description: A first TimberJS page written in MDX with frontmatter.
+publishedAt: 2026-06-23
+---
+
+export const metadata = {
+  title: 'Hello from MDX',
+  description: 'A first TimberJS page written in MDX with frontmatter.',
+};
+
+# {frontmatter.title}
+
+{frontmatter.description}
+
+This page lives at `app/blog/hello/page.mdx`, so Timber routes it to
+`/blog/hello`.
+
+## Why this is useful
+
+- Markdown keeps posts easy to write.
+- Frontmatter gives each post structured metadata.
+- JSX lets you drop React-flavored pieces into the prose.
+
+<aside>
+  <strong>MDX check:</strong> this callout is JSX rendered inside Markdown.
+</aside>
