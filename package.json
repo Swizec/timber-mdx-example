@@ -13,6 +13,7 @@
     "@timber-js/app": "alpha",
     "@vitejs/plugin-react": "^6.0.0",
     "@vitejs/plugin-rsc": "^0.5.27",
+    "lite-youtube-embed": "^0.3.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "rehype-autolink-headings": "^7.1.0",

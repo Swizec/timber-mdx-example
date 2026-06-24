@@ -1,7 +1,7 @@
 import type { Metadata } from '@timber-js/app';
 
 const siteUrl = 'https://timber-mdx-example.vercel.app';
-const siteName = 'Swizec.com';
+const siteName = 'swizec.com';
 const twitterHandle = '@swizec';
 const authorName = 'Swizec Teller';
 
