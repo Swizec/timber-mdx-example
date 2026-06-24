@@ -2,7 +2,11 @@ import type { ReactNode } from 'react';
 import './styles.css';
 
 export const metadata = {
-  title: 'timber-mdx-example',
+  metadataBase: new URL('https://timber-mdx-example.vercel.app'),
+  title: {
+    default: 'timber-mdx-example',
+    template: '%s | timber-mdx-example',
+  },
   description: 'Built with timber.js',
 };
 

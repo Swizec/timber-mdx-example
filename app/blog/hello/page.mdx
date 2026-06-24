@@ -4,10 +4,9 @@ description: A first TimberJS page written in MDX with frontmatter.
 publishedAt: 2026-06-23
 ---
 
-export const metadata = {
-  title: 'Hello from MDX',
-  description: 'A first TimberJS page written in MDX with frontmatter.',
-};
+import { metadataFromFrontmatter } from '../../mdx-metadata';
+
+export const metadata = metadataFromFrontmatter(frontmatter, '/blog/hello');
 
 # {frontmatter.title}
 
