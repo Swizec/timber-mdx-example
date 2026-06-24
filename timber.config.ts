@@ -1,7 +1,7 @@
 import { nitro } from '@timber-js/app/adapters/nitro';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import { recmaFrontmatterMetadata, remarkSwizecEmbeds } from './mdx-plugins.mjs';
+import { recmaFrontmatterMetadata, remarkSwizecEmbeds } from './mdx-plugins/index.mjs';
 
 const vercelOutputDirectory = new URL('./.vercel/output', import.meta.url).pathname;
 
