@@ -1,0 +1,20 @@
+---
+title: Hello from content collections
+description: A TimberJS page powered by content collections — drop any .mdx file in pages/ and get a route.
+publishedAt: 2026-06-25
+---
+
+This page lives at `pages/hello-world.mdx` and is served at `/hello-world` via the catch-all route in `app/[...slug]/page.tsx`.
+
+Drop any `.mdx` file anywhere under `pages/` — at any depth — and it becomes a page with full OpenGraph metadata from frontmatter.
+
+## How it works
+
+1. `content-collections.ts` defines the `pages` collection
+2. TimberJS activates `@content-collections/vite` automatically when it sees that config
+3. `app/[...slug]/page.tsx` catches all routes, looks up the matching page, and renders it
+4. The `export async function metadata()` returns OpenGraph tags from frontmatter
+
+## Nested routes work too
+
+Create `pages/blog/my-post.mdx` and it's available at `/blog/my-post`.

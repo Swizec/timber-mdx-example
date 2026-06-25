@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@content-collections/core": "^0.15.2",
+    "@content-collections/mdx": "^0.2.2",
     "@mdx-js/rollup": "^3.1.1",
     "@timber-js/app": "alpha",
     "@vitejs/plugin-react": "^6.0.0",
@@ -19,9 +21,11 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-mdx-frontmatter": "^5.2.0"
+    "remark-mdx-frontmatter": "^5.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@content-collections/vite": "^0.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3",

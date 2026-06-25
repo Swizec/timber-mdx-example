@@ -14,23 +14,31 @@ declare module '@timber-js/app' {
       segmentParams: {}
       searchParams: {}
     }
-    '/blog/hello': {
-      segmentParams: {}
+    '/[...slug]': {
+      segmentParams: { slug: string[] }
       searchParams: {}
     }
-    '/example': {
+    '/blog/hello': {
       segmentParams: {}
       searchParams: {}
     }
   }
 }
 
+declare module '@timber-js/app/server' {
+  export function getSegmentParams(segmentPath: '/[...slug]'): { slug: string[] }
+  export function getSegmentParams(): Record<string, string | string[]>
+}
+
 declare module '@timber-js/app/client' {
   import type { SearchParamsDefinition, SetParams, QueryStatesOptions, SearchParamCodec } from '@timber-js/app/search-params'
 
+  export function useSegmentParams(segmentPath: '/[...slug]'): { slug: string[] }
+  export function useSegmentParams(): Record<string, string | string[]>
+
   export function useQueryStates<R extends '/'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
+  export function useQueryStates<R extends '/[...slug]'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
   export function useQueryStates<R extends '/blog/hello'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
-  export function useQueryStates<R extends '/example'>(route: R, options?: QueryStatesOptions): [{}, SetParams<{}>]
   export function useQueryStates<T extends Record<string, unknown>>(codecs: { [K in keyof T]: SearchParamCodec<T[K]> }, options?: QueryStatesOptions): [T, SetParams<T>]
 
   // Typed Link overloads — per-route (block 1 / emitted first)
@@ -38,8 +46,9 @@ declare module '@timber-js/app/client' {
     (
       props:
         | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
+        | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/[...slug]'; segmentParams: { slug: string[] }; searchParams?: Record<string, unknown> })
+        | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: `/${string}`; segmentParams?: Record<string, never>; searchParams?: Record<string, unknown> })
         | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/blog/hello'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
-        | (Omit<import('react').AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { prefetch?: boolean; scroll?: boolean; preserveSearchParams?: true | string[]; onNavigate?: import('./client/link.js').OnNavigateHandler; children?: import('react').ReactNode } & { href: '/example'; segmentParams?: Record<string, unknown>; searchParams?: Record<string, unknown> })
     ): import('react').JSX.Element
   }
 
