@@ -2,16 +2,28 @@
 title: My favorite example article
 description: This is a description that shows up in social stuff
 published: 2020-04-04 10:00
-hero: "./img/pic.png"
+hero: "./img/pragmatic-programmer.png"
 ---
 
 Pragmatic Programmer is a book everyone should read at the start of their career. The earlier the better.
 
 Don't be like me and wait until every lesson is a _"Oh yeah, learned that the hard way"_ ... _"Hah yes! That was a fun and painful lesson"_ ... _"ooo good one! I remember a project just like that. Fuck that hurt"_
 
-## This is a remote image embed:
+## Relative image embed
+
+Images live right next to the article in `img/` — Vite imports them so you get content-hashed URLs in production:
+
+![The Pragmatic Programmer](./img/pragmatic-programmer.png)
+
+## Remote image embed (still works)
 
 [![](https://i.imgur.com/i2LW3tC.png)](https://pragprog.com/book/tpp20/the-pragmatic-programmer-20th-anniversary-edition)
+
+## File download link
+
+Relative links to PDFs and other assets are also imported by Vite so the file ships correctly:
+
+[Download example notes (PDF)](./example-notes.pdf)
 
 ## quotes
 

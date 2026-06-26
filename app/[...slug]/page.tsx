@@ -16,24 +16,37 @@ function resolvedPath(): string {
     return Array.isArray(slug) ? slug.join("/") : (slug ?? "");
 }
 
+function findPage(path: string) {
+    // Support both flat (pages/foo.mdx) and folder (pages/foo/index.mdx) layouts.
+    return allPages.find((p) => p._meta.path === path || p._meta.path === `${path}/index`);
+}
+
+function findModule(path: string) {
+    return (
+        mdxModules[`/pages/${path}.mdx`] ??
+        mdxModules[`/pages/${path}.md`] ??
+        mdxModules[`/pages/${path}/index.mdx`] ??
+        mdxModules[`/pages/${path}/index.md`]
+    );
+}
+
 export async function metadata(): Promise<Metadata> {
     const path = resolvedPath();
-    const page = allPages.find((p) => p._meta.path === path);
+    const page = findPage(path);
     if (!page) return {};
     return metadataFromFrontmatter(page, `/${path}`);
 }
 
 export default async function Page() {
     const path = resolvedPath();
-    const page = allPages.find((p) => p._meta.path === path);
+    const page = findPage(path);
 
     if (!page) {
         deny(404);
         return null;
     }
 
-    const loadModule =
-        mdxModules[`/pages/${path}.mdx`] ?? mdxModules[`/pages/${path}.md`];
+    const loadModule = findModule(path);
     if (!loadModule) {
         deny(404);
         return null;
