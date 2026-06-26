@@ -3,5 +3,11 @@
   "framework": null,
   "buildCommand": "pnpm run build",
   "devCommand": "pnpm run dev",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "pnpm install --frozen-lockfile",
+  "rewrites": [
+    {
+      "source": "/:path*/opengraph-image.png",
+      "destination": "/:path*/opengraph-image"
+    }
+  ]
 }

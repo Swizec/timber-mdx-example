@@ -46,7 +46,9 @@ export function metadataFromFrontmatter(page: Page, routePath: string): Metadata
   const { title, description, hero, image, publishedAt, published } = page;
   const pageUrl = absoluteUrl(routePath);
   const heroImage = hero ?? image;
-  const ogImage = heroImage ? socialCardUrl(title, heroImage) : undefined;
+  const ogImage = heroImage
+    ? socialCardUrl(title, heroImage)
+    : absoluteUrl(`${routePath}/opengraph-image.png`);
   const publishedTime = dateValue(publishedAt ?? published);
 
   return {
