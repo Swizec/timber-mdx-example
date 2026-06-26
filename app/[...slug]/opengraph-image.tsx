@@ -1,4 +1,4 @@
-import { ImageResponse } from 'takumi-js/response';
+import { ImageResponse } from '@vercel/og';
 import { allPages } from 'content-collections';
 import { getSegmentParams } from '@timber-js/app/server';
 
