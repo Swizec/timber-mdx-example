@@ -69,7 +69,7 @@ export function metadataFromFrontmatter(page: Page, routePath: string): Metadata
       images: ogImage ? { url: ogImage, alt: title } : undefined,
     },
     twitter: {
-      card: ogImage ? 'summary_large_image' : 'summary',
+      card: 'summary_large_image',
       site: twitterHandle,
       creator: twitterHandle,
       title,
