@@ -17,6 +17,7 @@
     "@vercel/og": "^0.11.1",
     "@vitejs/plugin-react": "^6.0.0",
     "@vitejs/plugin-rsc": "^0.5.27",
+    "highlight.js": "^11.11.1",
     "lite-youtube-embed": "^0.3.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -24,6 +25,7 @@
     "rehype-slug": "^6.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
+    "unist-util-visit": "^5.1.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

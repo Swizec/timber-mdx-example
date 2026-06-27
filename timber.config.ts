@@ -4,6 +4,7 @@ import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
 import { codeWindowTransformer } from './mdx-plugins/rehype-code-window.mjs';
 import { remarkSwizecEmbeds, remarkMdxStaticFiles } from './mdx-plugins/index.mjs';
+import { remarkInlineCodeLang } from './mdx-plugins/remark-inline-code-lang.mjs';
 
 const vercelOutputDirectory = new URL('./.vercel/output', import.meta.url).pathname;
 
@@ -18,11 +19,11 @@ export default {
     },
   }),
   mdx: {
-    remarkPlugins: [remarkSwizecEmbeds, remarkMdxStaticFiles],
+    remarkPlugins: [remarkSwizecEmbeds, remarkMdxStaticFiles, remarkInlineCodeLang],
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      [rehypeShiki, { theme: 'github-dark', transformers: [codeWindowTransformer] }],
+      [rehypeShiki, { theme: 'github-dark', inline: 'tailing-curly-colon', transformers: [codeWindowTransformer] }],
     ],
   },
   pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx'],

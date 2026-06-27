@@ -38,6 +38,13 @@ code {
   font-size: 0.9em;
 }
 
+/* Inline code highlighted by Shiki — dark pill, no window chrome */
+code.shiki {
+  background: #24292e;
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+}
+
 .swizec-embed {
   margin: 1.5rem 0;
 }
