@@ -1,5 +1,3 @@
-import { visit } from 'unist-util-visit';
-
 function dot(color) {
   return {
     type: 'element',
@@ -16,20 +14,17 @@ const titlebar = {
   children: [dot('red'), dot('yellow'), dot('green')],
 };
 
-export function rehypeCodeWindow() {
-  return (tree) => {
-    visit(tree, 'element', (node, index, parent) => {
-      if (node.tagName !== 'pre' || !node.properties?.className?.includes('shiki')) return;
-      if (!parent || index == null) return;
-
-      const wrapper = {
+export const codeWindowTransformer = {
+  name: 'code-window',
+  root(root) {
+    const pre = root.children[0];
+    root.children = [
+      {
         type: 'element',
         tagName: 'div',
         properties: { className: ['code-window'] },
-        children: [titlebar, node],
-      };
-
-      parent.children[index] = wrapper;
-    });
-  };
-}
+        children: [titlebar, pre],
+      },
+    ];
+  },
+};

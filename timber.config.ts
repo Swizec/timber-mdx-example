@@ -2,7 +2,7 @@ import { nitro } from '@timber-js/app/adapters/nitro';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
-import { rehypeCodeWindow } from './mdx-plugins/rehype-code-window.mjs';
+import { codeWindowTransformer } from './mdx-plugins/rehype-code-window.mjs';
 import { remarkSwizecEmbeds, remarkMdxStaticFiles } from './mdx-plugins/index.mjs';
 
 const vercelOutputDirectory = new URL('./.vercel/output', import.meta.url).pathname;
@@ -22,8 +22,7 @@ export default {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      [rehypeShiki, { themes: { light: 'github-light', dark: 'github-dark' } }],
-      rehypeCodeWindow,
+      [rehypeShiki, { themes: { light: 'github-light', dark: 'github-dark' }, transformers: [codeWindowTransformer] }],
     ],
   },
   pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx'],
