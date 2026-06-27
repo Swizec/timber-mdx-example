@@ -22,7 +22,7 @@ export default {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      [rehypeShiki, { themes: { light: 'github-light', dark: 'github-dark' }, transformers: [codeWindowTransformer] }],
+      [rehypeShiki, { theme: 'github-dark', transformers: [codeWindowTransformer] }],
     ],
   },
   pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx'],
