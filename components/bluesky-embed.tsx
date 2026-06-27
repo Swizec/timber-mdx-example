@@ -13,7 +13,9 @@ async function fetchBskyHtml(url: string): Promise<string | null> {
     if (!response.ok) return null;
 
     const data = (await response.json()) as BskyOEmbed;
-    return typeof data.html === 'string' ? data.html : null;
+    if (typeof data.html !== 'string') return null;
+    // Strip inline script tags — we load embed.js separately via BlueskyEmbedScript
+    return data.html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').trim();
   } catch {
     return null;
   }
