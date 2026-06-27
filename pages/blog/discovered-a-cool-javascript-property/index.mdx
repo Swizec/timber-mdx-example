@@ -9,7 +9,6 @@ categories: "Argument, Callback, Function (mathematics), JavaScript, Languages, 
 hero: ../../../defaultHero.jpg
 ---
 
-import { ContentUpgrades } from "@swizec/gatsby-theme-course-platform"
 
 A few years ago I was playing around with JavaScript trying to find the cleanest way to implement [callbacks](http://en.wikipedia.org/wiki/Callback_%28computer_programming%29 "Callback (computer programming)") in [functions](http://en.wikipedia.org/wiki/Function_%28mathematics%29 "Function (mathematics)"). Primarily I wanted a readable way to make certain the last argument passed is a callback, withut having to rely on knowing how many [arguments](http://en.wikipedia.org/wiki/Argument "Argument") there are and so on.
 
@@ -38,7 +37,6 @@ example(1, 2, 3)
 
 Ok, nothing too major, perhaps the biggest surprise is that arguments is an object, not a list or an array and strangely enough that the keys are strings despite being just numbers. Also pretty cool is that you don't have to specify any arguments at all, it just magically works. In python for example you at least have to say \*args or something like that.
 
-<ContentUpgrades.Javascript />
 
 But things really start to heat up when we mix both ways of using function arguments in javascript:
 

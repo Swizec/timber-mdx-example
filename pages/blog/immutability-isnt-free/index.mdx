@@ -6,7 +6,6 @@ categories: "Javascript, Lessons, Immutability, Array methods, Performance"
 content_upgrade: Javascript
 ---
 
-import { ContentUpgrades } from "@swizec/gatsby-theme-course-platform"
 
 Or how we took an API endpoint from 16s to 3s.
 
@@ -83,7 +82,6 @@ I didn't save the intermediary trace, but it paints the same picture. The reques
 
 What the hell is `tmd-server` doing with this data 🤨
 
-<ContentUpgrades.Javascript />
 
 We peppered the code with logs and found this loop was taking 8 seconds to gather appointment slots from `calendar-service` and group them by day.
 

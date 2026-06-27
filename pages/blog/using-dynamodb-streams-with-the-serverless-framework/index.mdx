@@ -7,7 +7,6 @@ content_upgrade: Serverless
 hero: ./img/Architecture-diagram-of-using-a-DynamoDB-Stream0cbe7f.png
 ---
 
-import { ContentUpgrades } from "@swizec/gatsby-theme-course-platform"
 
 DynamoDB Streams are a convenient way to react to changes in your database. And surprisingly easy to use 🥳
 
@@ -88,7 +87,6 @@ Run `serverless deploy` and you get a stream:
 
 The [`StreamViewType`](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_StreamSpecification.html) defines what goes in your stream events:
 
-<ContentUpgrades.Serverless />
 
 - `KEYS_ONLY`, get the key attributes of your item
 - `NEW_IMAGE`, get the full value after change
