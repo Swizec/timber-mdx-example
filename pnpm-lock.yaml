@@ -53,6 +53,9 @@ importers:
       remark-mdx-frontmatter:
         specifier: ^5.2.0
         version: 5.2.0
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
       zod:
         specifier: ^4.4.3
         version: 4.4.3
