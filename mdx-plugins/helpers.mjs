@@ -78,6 +78,8 @@ export function importDeclaration(names, source) {
 
 // Paths are relative to this file (mdx-plugins/helpers.mjs), so ../components/...
 const DEFAULT_COMPONENTS = {
+  BlueskyEmbed: '../components/bluesky-embed.tsx',
+  BlueskyEmbedScript: '../components/bluesky-embed-script.tsx',
   CodeSandboxEmbed: '../components/codesandbox-embed.tsx',
   GiphyEmbed: '../components/giphy-embed.tsx',
   TweetEmbed: '../components/tweet-embed.tsx',

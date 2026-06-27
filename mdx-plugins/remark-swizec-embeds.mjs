@@ -3,12 +3,18 @@ import { giphyEmbed } from './giphy.mjs';
 import { youtubeEmbed } from './youtube.mjs';
 import { codeSandboxEmbed } from './codesandbox.mjs';
 import { twitterEmbed } from './twitter.mjs';
+import { blueskyEmbed } from './bluesky.mjs';
 
 function embedForUrl(url, context) {
   if (!url) return null;
   if (url.startsWith('giphy:')) return giphyEmbed(url, context);
 
-  return youtubeEmbed(url, context) ?? codeSandboxEmbed(url, context) ?? twitterEmbed(url, context);
+  return (
+    youtubeEmbed(url, context) ??
+    codeSandboxEmbed(url, context) ??
+    twitterEmbed(url, context) ??
+    blueskyEmbed(url, context)
+  );
 }
 
 function getStandaloneUrl(node) {
@@ -53,12 +59,17 @@ export function remarkSwizecEmbeds(options = {}) {
     const context = {
       components: new Set(),
       hasTweet: false,
+      hasBsky: false,
     };
 
     transformNode(tree, context);
 
     if (context.hasTweet) {
       tree.children.push(mdxElement('TwitterWidgetsScript'));
+    }
+
+    if (context.hasBsky) {
+      tree.children.push(mdxElement('BlueskyEmbedScript'));
     }
 
     injectComponentImports(tree, file, context.components, options);
