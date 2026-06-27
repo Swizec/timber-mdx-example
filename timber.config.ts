@@ -2,7 +2,6 @@ import { nitro } from '@timber-js/app/adapters/nitro';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeSlug from 'rehype-slug';
-import { codeWindowTransformer } from './mdx-plugins/rehype-code-window.mjs';
 import { remarkSwizecEmbeds, remarkMdxStaticFiles } from './mdx-plugins/index.mjs';
 import { remarkInlineCodeLang } from './mdx-plugins/remark-inline-code-lang.mjs';
 
@@ -23,7 +22,7 @@ export default {
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      [rehypeShiki, { theme: 'github-dark', inline: 'tailing-curly-colon', transformers: [codeWindowTransformer] }],
+      [rehypeShiki, { themes: { light: 'github-light', dark: 'github-dark' }, inline: 'tailing-curly-colon' }],
     ],
   },
   pageExtensions: ['tsx', 'ts', 'jsx', 'js', 'mdx'],

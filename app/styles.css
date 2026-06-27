@@ -1,46 +1,58 @@
-/* Shiki single dark theme — colors are inlined by Shiki, nothing to override */
-
-pre.shiki {
-  border-radius: 0 0 10px 10px;
-  overflow-x: auto;
-  padding: 1.25rem 1.5rem;
-  margin: 0;
+/* Inline code follows system light/dark preference via CSS variables */
+code.shiki,
+code.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
 }
 
-/* Floating window wrapper injected around every pre.shiki */
-.code-window {
+@media (prefers-color-scheme: dark) {
+  code.shiki,
+  code.shiki span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+/* Block code is always dark — override the CSS variables */
+pre.shiki,
+pre.shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+pre.shiki {
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
   margin: 2rem 0;
-  overflow: hidden;
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
+  padding-top: calc(36px + 1.25rem);
+  position: relative;
 }
 
-.code-window-titlebar {
-  align-items: center;
-  background: #3a3a3a;
-  display: flex;
-  gap: 8px;
-  padding: 12px 16px;
+/* Titlebar with traffic-light dots via pseudo-element — block code only */
+pre.shiki::before {
+  background-color: #3a3a3a;
+  background-image:
+    radial-gradient(circle, #ff5f57 5px, transparent 5px),
+    radial-gradient(circle, #febc2e 5px, transparent 5px),
+    radial-gradient(circle, #28c840 5px, transparent 5px);
+  background-position: 14px 50%, 34px 50%, 54px 50%;
+  background-repeat: no-repeat;
+  border-radius: 10px 10px 0 0;
+  content: '';
+  height: 36px;
+  inset: 0 0 auto;
+  position: absolute;
 }
-
-.code-window-dot {
-  border-radius: 50%;
-  height: 12px;
-  width: 12px;
-}
-
-.code-window-dot--red    { background: #ff5f57; }
-.code-window-dot--yellow { background: #febc2e; }
-.code-window-dot--green  { background: #28c840; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.9em;
 }
 
-/* Inline code highlighted by Shiki — dark pill, no window chrome */
+/* Inline code highlighted by Shiki — pill shape, no window chrome */
 code.shiki {
-  background: #24292e;
   border-radius: 4px;
   padding: 0.15em 0.4em;
 }

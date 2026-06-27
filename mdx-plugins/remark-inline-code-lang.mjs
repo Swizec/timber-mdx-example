@@ -19,11 +19,9 @@ const LANGUAGES = ['javascript', 'typescript', 'python', 'ruby', 'haskell', 'rus
 // Shiki uses 'js'/'ts' aliases; map hljs names to Shiki lang ids
 const LANG_MAP = { javascript: 'js', typescript: 'ts' };
 
-const MIN_RELEVANCE = 5;
-
 function detectLang(code) {
   const result = hljs.highlightAuto(code, LANGUAGES);
-  if (!result.language || result.relevance < MIN_RELEVANCE) return null;
+  if (!result.language) return null;
   return LANG_MAP[result.language] ?? result.language;
 }
 
