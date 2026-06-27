@@ -1,3 +1,30 @@
+/* Shiki dual-theme: light by default, dark via prefers-color-scheme */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+pre.shiki {
+  border-radius: 6px;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+}
+
 .swizec-embed {
   margin: 1.5rem 0;
 }
